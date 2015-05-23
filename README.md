@@ -1,6 +1,6 @@
-# KOBA789 dotfiles
+# ashigirl96 dotfiles
 
-The dotfiles KOBA789 uses.
+The dotfiles ASHIGIRL96 uses (from KOBA789).
 
 ## How to Use
 
