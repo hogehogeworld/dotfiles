@@ -1,3 +1,7 @@
+#Color
+export LSCOLORS=exfxcxdxbxegedabagacad
+alias ls="ls -G"
+
 # inits
 for f in $(ls ${HOME}/.zsh/*.zsh | sort); do
     source $f
@@ -82,6 +86,7 @@ setopt share_history
 
 # editor
 export EDITOR='emacs'
+export EDITOR='vim'
 
 # key map
 bindkey -e
