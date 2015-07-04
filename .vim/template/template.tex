@@ -1,0 +1,34 @@
+% ファイル名称：source.tex
+% 文字コード　：Shift JIS
+%
+<+DATE+>
+\documentclass{article}
+\usepackage[pdftex]{graphicx}
+\usepackage{ums}
+%
+\pdfmapline{=msmin@Unicode@ ＜ipam.ttf}
+\pdfmapline{=msgoth@Unicode@ ＜ipag.ttf}
+%
+\begin{document}
+%\section{画像を出力する}
+吾輩は猫である．名前はまだ無い．
+どこで生れたかとんと見当がつかぬ．
+<+CURSOR+>
+\centerline{\includegraphics[width=3cm]{cat.png}}
+
+\section{数式を書いてみる}
+
+\[ \left( \int_0^\infty \frac{\sin x}{\sqrt{x}} dx \right)^2=
+\sum_{k=0}^\infty \frac{(2k)!}{2^{2k}(k!)^2} \frac{1}{2k+1}=
+\prod_{k=1}^\infty \frac{4k^2}{4k^2 -1}= \frac{\pi}{2} \]
+
+\section{表を作る}
+\centerline{%
+\begin{tabular}{lrr}
+\hline 品名 & 単価(円) & 個数
+\\ \hline りんご & 100 & 5
+\\ みかん & 50 & 10
+\\ マンゴ & 300 & 8
+\\ \hline
+\end{tabular}}
+\end{document}

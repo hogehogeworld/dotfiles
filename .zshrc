@@ -1,3 +1,6 @@
+#correct the spel
+set correct=all
+
 #Color
 export LSCOLORS=exfxcxdxbxegedabagacad
 alias ls="ls -G"
@@ -84,9 +87,19 @@ SAVEHIST=1000000
 setopt extended_history
 setopt share_history
 
+#history function
+function ha { history -E 1 }
+
+# history search
+bindkey '^P' history-beginning-search-backward
+bindkey '^N' history-beginning-search-forward
+
+
 # editor
 export EDITOR='emacs'
 export EDITOR='vim'
+
+
 
 # key map
 bindkey -e
@@ -129,3 +142,10 @@ MKSDBX="${HOME}/src/mksdbx/mksdbx"
 if [ -f $MKSDBX ]; then
     source $MKSDBX
 fi
+
+#setting pyenv's directory
+# 環境変数の設定
+export PATH="$HOME/.pyenv/shims:$PATH"
+
+[[ -s $HOME/.pythonz/etc/bashrc ]] && source $HOME/.pythonz/etc/bashrc
+export MECAB_PATH=/opt/local/lib/libmecab.dylib

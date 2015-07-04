@@ -1,0 +1,10 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =8
+let g:netrw_dirhist_1='/home/pi/vim/.vim'
+let g:netrw_dirhist_2='/home/pi/BinaryEditor-JS'
+let g:netrw_dirhist_3='/home/pi/.vim'
+let g:netrw_dirhist_4='/home/eshiho'
+let g:netrw_dirhist_5='/home/eshiho/ドキュメント'
+let g:netrw_dirhist_6='/home/eshiho/.vim'
+let g:netrw_dirhist_7='/home/eshiho/prog/Python-Assembler/libs'
+let g:netrw_dirhist_8='/Users/Ashigirl96'

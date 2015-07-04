@@ -1,0 +1,13 @@
+clang_complete
+indentLine
+jedi-vim
+neobundle.vim
+nerdtree
+syntastic
+tagbar
+tcomment_vim
+vim-django-support
+vim-latex
+vim-quickrun
+vim-template
+vim-virtualenv

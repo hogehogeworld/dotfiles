@@ -1,6 +1,6 @@
 [user]
-	name = Hidekazu Kobayashi
-	email = kobahide789@gmail.com
+	name = ashigirl96
+	email = reonreon3reon@gmail.com 
 [core]
 	excludesfile = ~/.gitignore
 	pager = less -R
@@ -17,3 +17,7 @@
 	default = simple
 [include]
 	path = .gitconfig.local
+[filter "lfs"]
+	clean = git lfs clean %f
+	smudge = git lfs smudge %f
+	required = true
