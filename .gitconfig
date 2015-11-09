@@ -1,9 +1,10 @@
 [user]
-	name = ashigirl96
-	email = reonreon3reon@gmail.com 
+	name = hogehogeworld
+	email = reonreon3reon@gmail.com
 [core]
 	excludesfile = ~/.gitignore
 	pager = less -R
+	editor = emacs 
 [color]
 	ui = auto
 [alias]

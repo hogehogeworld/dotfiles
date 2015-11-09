@@ -124,7 +124,6 @@ quickrun-settings	quickrun.jax	/*quickrun-settings*
 quickrun-synopsis	quickrun.jax	/*quickrun-synopsis*
 quickrun-syntax-option	quickrun.jax	/*quickrun-syntax-option*
 quickrun.txt	quickrun.jax	/*quickrun.txt*
-template	template.jax	/*template*
 template#load()	template.jax	/*template#load()*
 template#loading()	template.jax	/*template#loading()*
 template#search()	template.jax	/*template#search()*
@@ -140,3 +139,4 @@ template-options	template.jax	/*template-options*
 template-selection	template.jax	/*template-selection*
 template-usage	template.jax	/*template-usage*
 template.txt	template.jax	/*template.txt*
+template.vim	template.jax	/*template.vim*

@@ -10,6 +10,25 @@ set fileencodings=iso-2022-jp,euc-jp,utf-8,ucs2le,ucs-2,cp932
 syntax on
 set number
 
+" 挿入モードでのカーソル移動
+inoremap <C-n> <Down>
+inoremap <C-p> <Up>
+inoremap <C-b> <Left>
+inoremap <C-f> <Right>
+inoremap <C-a> <Esc>I
+inoremap <C-e> <Esc>A
+inoremap <silent> jj <ESC>
+inoremap <silent> <C-j> j
+
+" undo
+inoremap <C-_> <Esc>u
+
+inoremap <silent> <C-h> <C-g>u<C-h>
+inoremap <silent> <C-d> <Del>
+inoremap <silent> <C-k> <Esc>C
+" カーソルから行末までヤンク
+inoremap <silent> <C-y>0 <Esc>ly$<Insert>
+
 set nocompatible
 set expandtab
 set tabstop=2
@@ -39,6 +58,7 @@ endif
 
 colorscheme hybrid
 
+
 let g:indent = 2
 "---------------------------
 "" Start Neobundle Settings.
@@ -51,13 +71,34 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 NeoBundleFetch 'Shougo/neobundle.vim'
 
 NeoBundle 'tomtom/tcomment_vim'
+let g:tcommentMapLeader1 = '<c-\>'
+NeoBundle 'tpope/vim-surround'
 NeoBundle 'Yggdroot/indentLine'
+
+"Vim
+let g:indentLine_color_term = 239
+
+" ログファイルを色づけしてくれる
+
+NeoBundle 'vim-scripts/AnsiEsc.vim'
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'majutsushi/tagbar'
 NeoBundle 'davidhalter/jedi-vim'
 NeoBundle 'Rip-Rip/clang_complete'
 NeoBundle 'vim-latex/vim-latex'
-NeoBundle 'scrooloose/nerdtree'
+NeoBundle 'netrw.vim'
+NeoBundle 'bronson/vim-trailing-whitespace'
+
+NeoBundle 'Shougo/unite.vim'
+
+NeoBundle 'junegunn/vim-easy-align'
+"Start interactive EasyAlign in visual mode (e.g. vip<Enter>)
+vmap <Enter> <Plug>(EasyAlign)
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
+
+NeoBundle 'Shougo/vimfiler.vim'
+nnoremap <leader>e :VimFilerExplore -split -winwidth=30 -find -no-quit<Cr>
 
 " Djangoを正しくVimで読み込めるようにする
 NeoBundleLazy "lambdalisue/vim-django-support", {
@@ -106,8 +147,16 @@ NeoBundleCheck
 " End Neobundle Settings.
 "-------------------------
 
-let g:jedi#auto_initialization = 1
-let g:jedi#completions_command = "<C-n>"
+let g:jedi#auto_initialization = 0
+let g:jedi#auto_vim_configuration = 0
+let g:jedi#goto_command = "<leader>d"
+let g:jedi#goto_assignments_command = "<leader>g"
+let g:jedi#goto_definitions_command = ""
+let g:jedi#documentation_command = "K"
+let g:jedi#usages_command = "<leader>n"
+let g:jedi#completions_command = "<C-g>"
+let g:jedi#completions_enabled = 0
+
 
 let g:syntastic_always_populate_loc_list = 0
 let g:syntastic_auto_loc_list = 0
@@ -120,22 +169,22 @@ let g:clang_library_path = '/usr/share/clang/'
 let g:clang_debug = 1
 let g:clang_user_options = '-std=c++11 -stdlib=libc++'
 
-let g:indentLine_char='|'
+let g:indentLine_char='.'
 
 let g:syntastic_mode_map = { 'mode': 'passive' }
 
 nnoremap /  /\v
-nnoremap ,U :se enc=utf-8<CR>
-nnoremap ,S :se enc=Shift-JIS<CR>
-nnoremap .U :e ++enc=utf-8<CR>
-nnoremap .S :e ++enc=Shift-JIS<CR>
+nnoremap ,U       :se enc=utf-8<CR>
+nnoremap ,S       :se enc=Shift-JIS<CR>
+nnoremap .U       :e ++enc=utf-8<CR>
+nnoremap .S       :e ++enc=Shift-JIS<CR>
 nnoremap <silent> > :call Indent()<CR>
 nnoremap <silent> < :call Unindent()<CR>
-inoremap <C-v> <ESC>"+gPi<right>
-nnoremap <C-v> "+gP<right>
-nmap <F8> :TagbarToggle<CR>
+inoremap <C-l>    <ESC>"+gPi<right>
+nnoremap <C-l>    "+gP<right>
+nmap     <F8>     :TagbarToggle<CR>
 
-let g:lightline = { 
+let g:lightline = {
       \ 'colorscheme': 'landscape',
       \ 'active': {
       \   'right': [ ['syntastic', 'lineinfo'],
@@ -144,7 +193,7 @@ let g:lightline = {
       \              ['fileencoding', 'filetype']]
       \ },
       \ 'component_expand': {
-      \  'syntastic': 'SyntasticStatuslineFlag', 
+      \  'syntastic': 'SyntasticStatuslineFlag',
       \ },
       \ 'component_type': {
       \   'syntastic': 'error',
@@ -152,17 +201,17 @@ let g:lightline = {
       \ 'subseparator': { 'left': '|', 'right': '|' },
       \ }
 let g:markdown_fenced_languages = [
-      \ 'java', 
-      \ 'javascript', 
-      \ 'php', 
-      \ 'python', 
-      \ 'perl', 
-      \ 'ruby', 
-      \ 'c', 
-      \ 'cpp', 
-      \ 'vim', 
-      \ 'html', 
-      \ 'css', 
+      \ 'java',
+      \ 'javascript',
+      \ 'php',
+      \ 'python',
+      \ 'perl',
+      \ 'ruby',
+      \ 'c',
+      \ 'cpp',
+      \ 'vim',
+      \ 'html',
+      \ 'css'
       \ ]
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -175,12 +224,13 @@ augroup mysetting
   autocmd BufNewFile,BufRead *.md set filetype=markdown
   autocmd BufWrite * call DeleteBlankLineIndent()
   autocmd BufWritePost *.c,*.cpp,*.py call s:syntastic()
-  autocmd FileType python setlocal completeopt-=preview
+  " autocmd FileType python setlocal completeopt-=preview
   autocmd FileType c,cpp set foldmethod=marker foldexpr=
   autocmd BufNewFile,BufReadPost * call s:vimrc_local(expand('<afile>:p:h'))
-  autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd   ctermbg=110
-  autocmd VimEnter,Colorscheme * :hi IndentGuidesEven  ctermbg=140
+  autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd   ctermbg=black
+  autocmd VimEnter,Colorscheme * :hi IndentGuidesEven  ctermbg=darkgrey
 augroup END
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                                Functions                                    "
@@ -245,7 +295,7 @@ cmap w!! w !sudo tee > /dev/null %
 nnoremap <Tab> %
 vnoremap <Tab> %
 
-let g:tex_flavor='latex' 
+let g:tex_flavor='latex'
 
 
 set noshellslash

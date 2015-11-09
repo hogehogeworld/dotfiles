@@ -1,5 +1,8 @@
 all: emacs zsh tmux npm_completion brew_completion git
 
+vim:
+	ln -s -f ${PWD}/.vim ${HOME}/.vim
+
 emacs:
 	ln -s -f ${PWD}/.emacs ${HOME}/.emacs
 
